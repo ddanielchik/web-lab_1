@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-страница студента</title>
+    <style>
+        /* Стили для шапки */
+        header {
+            font-family: cursive;
+            color: #4A90E2; /* Цвет шрифта */
+            font-size: 24px; /* Размер шрифта */
+            margin-bottom: 20px;
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Стили для элементов ввода */
+        input {
+            margin: 5px 0;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box; /* Учитываем отступы в ширине */
+        }
+
+        /* Стили для ошибок */
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    ФИО студента: Иванов Иван Иванович<br>
+    Номер группы: 123456<br>
+    Номер варианта: 1
+</header>
+
+<form id="myForm" method="GET" action="#">
+    <table>
+        <tr>
+            <th>Параметр</th>
+            <th>Значение</th>
+        </tr>
+        <tr>
+            <td>Координата X:</td>
+            <td><input type="text" id="coordX" name="coordX" required></td>
+        </tr>
+        <tr>
+            <td>Координата Y:</td>
+            <td><input type="text" id="coordY" name="coordY" required></td>
+        </tr>
+        <tr>
+            <td>Радиус:</td>
+            <td><input type="text" id="radius" name="radius" required></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Отправить"></td>
+        </tr>
+    </table>
+    <div id="errorMessages" class="error"></div>
+</form>
+
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        let errorMessages = '';
+        const coordX = document.getElementById('coordX').value;
+        const coordY = document.getElementById('coordY').value;
+        const radius = document.getElementById('radius').value;
+
+        // Проверка координат
+        if (isNaN(coordX) || isNaN(coordY)) {
+            errorMessages += 'Координаты должны быть числами.<br>';
+        }
+
+        // Проверка радиуса
+        if (isNaN(radius) || radius <= 0) {
+            errorMessages += 'Радиус должен быть положительным числом.<br>';
+        }
+
+        // Если есть ошибки, блокируем отправку формы
+        if (errorMessages) {
+            event.preventDefault(); // Блокируем отправку формы
+            document.getElementById('errorMessages').innerHTML = errorMessages;
+        }
+    });
+</script>
+
+</body>
+</html>

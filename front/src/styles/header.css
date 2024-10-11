@@ -1,0 +1,33 @@
+*{
+        margin: 0px;
+        padding: 0px;
+}
+header{
+        display: flex;
+        background-color: #956BD6;
+        padding: 1px;
+}
+header img {
+        width: 100px;
+        margin: 6px;
+}
+
+.student-info{
+        font-family: cursive;
+        color: #FFF073;
+        font-size: 24px;
+        text-align: center;
+        margin: 15px;
+        }
+
+main{
+        background-color: #7D44D6;
+}
+
+
+
+
+footer{
+        background-color: #4E10AE;
+        padding: 100px 0px;
+}
